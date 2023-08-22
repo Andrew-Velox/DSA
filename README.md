@@ -9,7 +9,7 @@
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/mohabbat69
 
-## Data Structure and Algorithm (DSA) in c++
+## Data Structures and Algorithms (DSA) in c++
 
 - [Table of Contents](#table-of-contents)
 - [Searching](#searching)
