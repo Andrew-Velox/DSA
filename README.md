@@ -2,10 +2,10 @@
 [![Forks][forks-shield]][forks-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-[forks-shield]: https://img.shields.io/github/forks/Andrew-Velox/CP-SOL-NOTES.svg?style=for-the-badge
-[forks-url]: https://github.com/Andrew-Velox/CP-SOL-NOTES/network/members
-[stars-shield]: https://img.shields.io/github/stars/Andrew-Velox/CP-SOL-NOTES.svg?style=for-the-badge
-[stars-url]: https://github.com/Andrew-Velox/CP-SOL-NOTES/stargazers
+[forks-shield]: https://img.shields.io/github/forks/Andrew-Velox/DSA.svg?style=for-the-badge
+[forks-url]: https://github.com/Andrew-Velox/DSA/network/members
+[stars-shield]: https://img.shields.io/github/stars/Andrew-Velox/DSA.svg?style=for-the-badge
+[stars-url]: https://github.com/Andrew-Velox/DSA/stargazers
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/mohabbat69
 
