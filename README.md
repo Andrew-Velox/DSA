@@ -15,10 +15,12 @@
 - [Searching](#searching)
 - [Linear Search](#linear-search)
 - [Binary Search](#binary-search)
-- [Shorting](#shorting)
+- [Sorting](#sorting)
 - [Selection Sort](#selection-sort)
 - [Bubble Sort](#bubble-sort)
 - [Insertion Sort](#insertion-sort)
+- [Quick Sort](#quick-sort)
+
 
 
 <h1>Searching</h1>
@@ -45,7 +47,8 @@ int linearSearch(int array[], int size, int serchNumber){
 
 int main(){
   int a[] = {1,4,6,7,10,19,22,23,30,35,39,46,49,50,52,55,61,67,70,71};
-  /*To find the length of the array, you need to divide the total amount of memory by the size of one element - this method works because the array stores items of the same type.*/
+  /*To find the length of the array, you need to divide the total amount of memory by the
+ size of one element - this method works because the array stores items of the same type.*/
   int len = sizeof(a) / sizeof(a[0]); // Calculate the size of the array.
   int n;
   cout << "Enter which Number You want to search: ";
@@ -181,7 +184,7 @@ int main(){
   ```
 </details>
 
-<h1>Shorting</h1>
+<h1>Sorting</h1>
 
 ### Selection Sort
 
@@ -260,6 +263,223 @@ int main(){
 }
   ```
 
+### Insertion Sort
+
+ Insertion sort works similarly as we sort cards in our hand in a card game.
+
+We assume that the first card is already sorted then, we select an unsorted card. If the unsorted card is greater than the card in hand, it is placed on the right otherwise, to the left. In the same way, other unsorted cards are taken and put in their right place.
+
+Here is the code in C++.
+
+  ``` c++
+#include <bits/stdc++.h>
+using namespace std;
+
+void insertionSort(int arr[], int size){
+
+    //----------------//Explain for the first loop//-------------//
+
+
+    //---if we use an array like this [3,2,4,6,12]---//
+                                            //1 2 3 4    
+    for(int x=1; x<size; x++){ // start form [2,4,6,12] 
+        int temp = arr[x]; // temp is 2
+        int y = x-1; // y = 0 , 0 index = 3 , arr[y] = 3
+
+        //for(y=x-1; y>=0; y--) //if we use for loops insted.
+
+        while(y>=0){ // here y=0
+            if(arr[y]>temp){ // arr[y]=3 whice is begger then temp(temp=2),
+                //shift arr[y] value to 1 step right
+                arr[y+1] = arr[y]; // now arr[y+1] = 3 , now main array is like [3,3,4,6,12]
+            }
+
+            else{ // it will not work
+                //stop
+                break;
+            }
+            y--; // y = -1 and first loop ends here.
+        }
+        arr[y+1] = temp; // now arr[y+1](index=0) = 2 , now main array is like [2,3,4,6,12]
+    }
+
+    // And thats how insertionSort works ;)
+
+    //--------for print------//
+    for(int x=0; x<size; x++){
+        cout << arr[x] << " ";
+    }
+}
+
+int main(){
+   /*  int size;
+    cin >> size;
+    int array[size];
+    
+    for(int x=0; x<size; x++){
+        cin >> array[x];
+    }
+ */
+    // if you want to take input remove the comments and delete this two lines below.
+
+    int array[]={10, 5, 15, 12, 8, 1, 18, 20, 3};
+    int size = sizeof(array)/sizeof(array[0]);
+
+    insertionSort(array,size);
+    cout << endl;
+    return 0;
+}
+  ```
+
+### Quick Sort
+
+ QuickSort is a sorting algorithm based on the Divide and Conquer algorithm that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
+
+ Here is the code in C++.
+
+  ``` c++
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// if you want to swap the value by using deferent function //
+
+/* void swap(int arr[], int i, int j){
+    int temp=arr[i];
+    arr[i]= arr[j];
+    arr[j]= temp;
+} */
+
+int partition(int arr[], int low, int high){
+                        //low=0, hight=6
+
+         // array = 6, 3, 9, 5, 2, 8 //
+    //array index = 0  1, 2, 3, 4, 5 //
+
+
+    int pivot = arr[high]; // [pivot = 8]
+    int i = low-1; // i = -1(0-1) out of index
+
+    //      low=0, high=8   //
+    for(int x=low; x<high; x++){
+                             //    first loop       |  2nd loop     |   3rd loop     |  4th loop       |  5th loop       |  6th loop      //
+        if(arr[x] < pivot){  //  arr[0]=6 < pivot=8 | ar[1]=3 < p=8 |  ar[2]=9 > p=8 |  ar[3]=5 < p=8  |  ar[4]=2 < p=8  |  ar[5]=8 == p=8
+            i++;             //   i = 0 (index)     | i = 1 (index) |    skip        |  i = 2          |  i = 3          |  skip   
+            
+            //swap(arr,i,x);
+            // swap//           // 1st loop  |  2nd loop  |  4th loop  |  5th loop
+            int temp = arr[i];  // temp=6    |   temp=3   |   temp=9   |   temp=9
+            arr[i] = arr[x];    // 6<-->6    |   3<-->3   |   9<-->5   |   9<-->2
+            arr[x] = temp;      // 6<-->6    |   3<-->3   |   5<-->9   |   2<-->9
+        }
+
+        //1st loop = 6, 3, 9, 5, 2, 8
+        //2nd loop = 6, 3, 9, 5, 2, 8
+        //3rd loop = 6, 3, 9, 5, 2, 8
+        //4th loop = 6, 3, 5, 9, 2, 8
+        //5th loop = 6, 3, 5, 2, 9, 8
+    }
+
+    //swap(arr, i+1, high);
+    //         i = 3 + 1
+    int temp = arr[i + 1];  // temp = 9
+    arr[i + 1] = arr[high]; // 9<-->8
+    arr[high] = temp;       // 8<-->9
+
+    /* finaly the loop is = 6, 3, 5, 2, 8, 9     for first try we transfer all the 
+    big numbers to the right & small numbers to the left from pivot number.*/
+
+    return i + 1;  // return = 3+1 = 4
+
+}
+
+
+void quickSort(int arr[], int low, int high){
+    // first condition we have to check that low is smaller then high.
+    if(low<high){
+        // getting pivod index, here low=0 & high=8
+        int pi = partition(arr, low, high); // after passing this values,we get the pivot(8) index position pi=4
+
+        quickSort(arr, low, pi-1);  // sort the small elements from the pivot, so 4-1
+        quickSort(arr, pi+1, high); // sort the big elements from the pivot, so 4+1
+    }
+}
+
+int main(){
+    //int n;
+    int array[6]={6, 3, 9, 5, 2, 8};
+
+    int size = 6;//(sizeof(array)/sizeof(array[0]));
+
+    /* low will be fast = 0, and high will be the last 
+    index number last = size-1 */
+    quickSort(array, 0, size-1); 
+
+    for(int x=0; x<size; x++){
+        cout << array[x] << " ";
+    }
+    cout << endl;
+    //cout << size << endl;
+    return 0;
+} 
+
+  ```
+Without Comments.
+
+<details> <summary> smash me </summary>
+
+
+  ``` c++
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int partition(int arr[], int low, int high){
+    int pivot = arr[high];
+    int i = low-1;
+
+    for(int x=low; x<high; x++){
+        if(arr[x] < pivot){
+            i++;
+            int temp = arr[i];
+            arr[i] = arr[x];
+            arr[x] = temp;
+        }
+    }
+
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+
+    return i + 1;
+}
+
+void quickSort(int arr[], int low, int high){
+
+    if(low<high){
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi-1);
+        quickSort(arr, pi+1, high);
+    }
+}
+
+int main(){
+    int array[6]={6, 3, 9, 5, 2, 8};
+    int size = 6;
+
+    quickSort(array, 0, size-1); 
+
+    for(int x=0; x<size; x++){
+        cout << array[x] << " ";
+    }
+    cout << endl;
+ 
+    return 0;
+} 
+  ```
+</details>
+
 <!--
 
 
@@ -274,6 +494,7 @@ int main(){
     cout << 25 << '\n';
     return 0;
   }
+  
   ```
 
 ### The Ultimate Question: Why should I start Competitive Programming?
