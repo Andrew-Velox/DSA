@@ -32,8 +32,90 @@
 <h1>Data Structures</h1>
 
 <h2>Linked List</h2>
-A linked list consists of nodes where each node contains a data field and a reference(link) to the next node in the list.<br></br>
-<h3>Singly Linked List</h3>
+A linked list consists of nodes where each node contains a data field and a reference(link) to the next node in the list. So, If we want to create a Linked list we have to create a node first.<br></br>
+So, At first lets look at the constructor of a node.
+
+
+  ``` c++
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+        int val;
+        Node *next;
+
+    Node(int val){
+        this->val=val;
+        this->next=NULL;
+    }
+
+};
+
+int main(){
+    Node a(10);
+    Node b(20);
+    
+    a.next=&b;
+
+    cout << a.val << endl;
+    cout << b.val << endl;
+    cout << a.next->val << endl;
+    return 0;
+}
+
+  ```
+
+<details> <summary> For Better Understand Click here To See with Comments </summary>
+
+
+  ``` c++
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+        int val;    // value of the node
+        Node *next; // pointer of the node
+
+    // constructor(it helps to take input more easy way)
+    Node(int val){
+        this->val=val;
+        this->next=NULL;
+    }
+
+};
+
+int main(){
+    
+    // if we dont want to create constructor then we have to take input like this
+     
+    // Node one,two;
+    // one.val=100;
+    // two.val=200;
+    // one.next=&two; 
+    // cout << one.val << endl;
+    // cout << two.val << endl;
+    // cout << one.next->val << endl;
+    
+   
+    // Using constructor
+    Node a(10);
+    Node b(20);
+    
+    a.next=&b; //pointing a next to b node
+    cout << a.val << endl;  // 10
+    cout << b.val << endl;  // 20
+    cout << a.next->val << endl; // 20
+
+    return 0;
+}
+  ```
+</details>
+<a href="https://github.com/Andrew-Velox/DSA/tree/main/Linked%20List">Go to Linked list Folder to see all the code of linked list.</a>
+<!-- #### Go to Linked list Folder to see the all code of liked list.<br> -->
+
+<h2>Singly Linked List</h2>
 Singly linked list can be defined as the collection of ordered set of elements. The number of elements may vary according to need of the program. A node in the singly linked list consist of two parts: data part and link part. Data part of the node stores actual information that is to be represented by the node while the link part of the node stores the address of its immediate successor.
 <br></br>
  <details> <summary> Click here to See the complete Linked list code in C++ </summary>
