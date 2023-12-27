@@ -113,7 +113,6 @@ int main(){
   ```
 </details>
 <a href="https://github.com/Andrew-Velox/DSA/tree/main/Linked%20List">Go to Linked list Folder to see all the code of linked list.</a>
-<!-- #### Go to Linked list Folder to see the all code of liked list.<br> -->
 
 <h2>Singly Linked List</h2>
 Singly linked list can be defined as the collection of ordered set of elements. The number of elements may vary according to need of the program. A node in the singly linked list consist of two parts: data part and link part. Data part of the node stores actual information that is to be represented by the node while the link part of the node stores the address of its immediate successor.
@@ -279,6 +278,8 @@ int main(){
 }
   ```
 </details>
+
+<a href="https://github.com/Andrew-Velox/DSA/tree/main/Linked%20List/Singly%20Linked%20List">Visit the Singly linked list Folder to see more codes.</a>
 
 
 <h3>Doubly Linked List</h3>
