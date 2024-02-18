@@ -571,7 +571,7 @@ int main(){
 
 
 </details>
-<a href="https://github.com/Andrew-Velox/DSA/tree/main/Stack">Go to Queue Folder to see more codes on Queue</a>
+<a href="https://github.com/Andrew-Velox/DSA/tree/main/Queue">Go to Queue Folder to see more codes on Queue</a>
 
 <h1>Algorithms</h1>
 
