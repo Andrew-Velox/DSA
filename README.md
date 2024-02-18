@@ -117,7 +117,7 @@ int main(){
 <h2>Singly Linked List</h2>
 Singly linked list can be defined as the collection of ordered set of elements. The number of elements may vary according to need of the program. A node in the singly linked list consist of two parts: data part and link part. Data part of the node stores actual information that is to be represented by the node while the link part of the node stores the address of its immediate successor.
 <br></br>
- <details> <summary> Click here to See the complete Linked list code in C++ </summary>
+ <details> <summary> Click here to See the complete Singly Linked list code in C++ </summary>
 
   ``` c++
 #include <bits/stdc++.h>
@@ -282,13 +282,227 @@ int main(){
 <a href="https://github.com/Andrew-Velox/DSA/tree/main/Linked%20List/Singly%20Linked%20List">Visit the Singly linked list Folder to see more codes.</a>
 
 
-<h3>Doubly Linked List</h3>
- updating...
+<h2>Doubly Linked List</h2>
+Doubly Linked List is a variation of Linked list in which navigation is possible in both ways, forward as well as backward easily as compared to Single Linked List.
 <br></br>
- <details> <summary> Click here to See the complete Linked list code in C++ </summary>
- ``` c++
- ```
- </details>
+ <details> <summary> Click here to See the complete Doubly Linked list code in C++ </summary>
+
+  ``` c++
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+        int val;
+        Node *next;
+        Node *prev;
+
+    Node(int val){
+        this->val=val;
+        this->next=NULL;
+        this->prev=NULL;
+    }
+};
+
+
+// ------------- insertion------------------
+void in_at_head(Node *&head,Node *&tail,int val){
+
+    Node *newNode = new Node(val);
+
+    if(head==NULL){
+        head=newNode;
+        tail=newNode;
+        return;
+    }
+
+    newNode->next=head;
+    head->prev=newNode;
+    head = newNode;
+}
+
+void in_at_tail(Node *&head, Node *&tail, int val){
+    Node *newNode=new Node(val);
+    if(head==NULL){
+        head=newNode;
+        tail=newNode;
+        return;
+    }
+    tail->next=newNode;
+    newNode->prev=tail;
+    tail=newNode;
+}
+
+void in_at_any_pos(Node *&head,int pos, int val){
+    Node *newNode=new Node(val);
+    
+    Node *tmp=head;
+    for(int x=1;x<=pos-1; x++){
+        tmp=tmp->next;
+    }
+
+    newNode->next=tmp->next;    // 100->30
+    tmp->next->prev=newNode;    // 30<-100
+    tmp->next=newNode;          // 20-> 100
+    newNode->prev=tmp;          // 100<-20
+
+}
+
+// --------------- deletions-----------------------
+void del_any_pos(Node *head,int pos){
+
+    Node *tmp=head;
+    for(int x=1; x<=pos-1; x++){
+        tmp=tmp->next;
+    }
+
+    Node *delNode = tmp->next;
+    tmp->next=tmp->next->next;
+    tmp->next->prev=tmp;
+    delete delNode;
+    
+}
+
+void del_tail(Node *&head,Node *&tail){
+    Node *delNode=tail;
+    if(head->next==NULL){
+        head=head->next;
+        tail=head;
+        delete delNode;
+        return;
+    }
+    tail=tail->prev;
+    tail->next=NULL;
+    delete delNode;
+}
+
+void del_head(Node *&head, Node *&tail){
+
+    Node *delNode=head;
+    if(head->next== NULL){
+        head=head->next;
+        tail=head;
+        delete delNode;
+        return;
+    }
+    head=head->next;
+    head->prev=NULL;
+    delete delNode;
+}
+
+
+// ---------------------printing-----------------
+void print_nrml(Node *head){
+    Node *tmp=head;
+
+    while(tmp!=NULL){
+        cout << tmp->val << " ";
+        tmp=tmp->next;
+    }
+    cout << endl;
+
+}
+
+void print_rev(Node *tail){
+    Node *tmp=tail;
+
+    while(tmp!=NULL){
+        cout << tmp->val << " ";
+        tmp=tmp->prev;
+    }
+    cout << endl;
+
+}
+
+// -----------------size ----------------------
+int size(Node *head){
+    Node *tmp=head;
+
+    int cnt=0;
+    while(tmp!=NULL){
+        cnt++;
+        tmp=tmp->next;
+    }
+    return cnt;
+}
+
+
+
+int main(){
+    Node *head = NULL;
+    Node *tail = NULL;
+    while(1){
+        cout << "1. Insert at Head." << endl;
+        cout << "2. Insert at tail." << endl;
+        cout << "3. Insert at any Position." << endl;
+        cout << "4. Delete form Position." << endl;
+        cout << "5. Print Normal." << endl;
+        cout << "6. Print Reverse." << endl;
+        cout << "7. Exit." << endl;
+        cout << "Enter: ";
+        int n; cin >> n;
+
+        if(n==1){
+            int v;
+            cout << "Enter Value: ";
+            cin >> v;
+            in_at_head(head,tail,v);
+        }
+
+        if(n==2){
+            int v;
+            cout << "Enter Value:";
+            cin >> v;
+            in_at_tail(head,tail,v);
+        }
+        else if(n==3){
+            cout << "Enter Value: ";
+            int v;cin >> v;
+            cout << endl << "Enter Position: ";
+            int pos; cin >> pos;
+
+            if(pos==0){
+                in_at_head(head,tail,v);
+            }
+            else in_at_any_pos(head,v,pos);
+        }
+
+        else if(n==4){
+            cout << "Enter Position: ";
+            int pos; cin >> pos;
+
+            if(pos==0){
+                del_head(head,tail);
+            }
+            else if(pos==size(head)-1){
+                del_tail(head,tail);
+            }
+            else if(pos>=size(head)){
+                cout << "Invalid" << endl;
+            }
+            else{
+                del_any_pos(head,pos);
+            }
+        }
+        else if(n==5){
+            print_nrml(head);
+            
+        }
+        else if(n==6) {
+            print_rev(tail);
+        }
+        else if(n==7){
+            break;
+        }
+
+    }
+    return 0;
+}
+  ```
+</details>
+
+<a href="https://github.com/Andrew-Velox/DSA/tree/main/Linked%20List/Doubly%20Linked%20LIst">Visit Doubly linked list Folder to see more codes.</a>
+
 
  
 <h1>Stack</h1>
