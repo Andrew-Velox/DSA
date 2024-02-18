@@ -538,8 +538,40 @@ int main(){
 </details>
 <a href="https://github.com/Andrew-Velox/DSA/tree/main/Stack">Go to Stack Folder to see more codes on Stack.</a>
 
-### Queue
-Updating....
+<h1>Queue</h1>
+
+A Queue is like a line waiting to purchase tickets, where the first person in line is the first person served. (i.e. First come first serve). A Queue works on the FIFO (First In First Out ) process. <br></br>
+Queue implementation using STL.
+
+
+  ``` c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+
+    queue<int> q;
+
+    int n; cin >> n;
+    while(n--){
+        int val;
+        cin >> val;
+        q.push(val);
+    }
+
+    while(!q.empty()){
+        cout << q.front() << endl;
+        q.pop();
+    }
+    
+    return 0;
+}
+
+  ```
+
+
+</details>
+<a href="https://github.com/Andrew-Velox/DSA/tree/main/Stack">Go to Queue Folder to see more codes on Queue</a>
 
 <h1>Algorithms</h1>
 
