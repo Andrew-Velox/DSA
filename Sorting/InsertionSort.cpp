@@ -17,7 +17,7 @@ void insertionSort(int arr[], int size){
         while(y>=0){ // here y=0
             if(arr[y]>temp){ // if arr[y]=3 whice is begger then temp(temp=2),
                 //shift arr[y] value to 1 step right
-                arr[y+1] = arr[y]; // now arr[y+1] = 3 & arr[y] = 2
+                arr[y+1] = arr[y]; // now arr[y+1] = 3 & arr[y] = 3 & temp = 2 {3,3,4,6,12}
             }
 
             else{ // it will not work
@@ -26,7 +26,7 @@ void insertionSort(int arr[], int size){
             }
             y--; // y = -1 and first loop ends here.
         }
-        arr[y+1] = temp; // now arr[y+1](index=0) = 2
+        arr[y+1] = temp; // now arr[y+1](index=0) = 2 {2,3,4,6,12}
     }
 
     // And thats how insertionSort works ;)
