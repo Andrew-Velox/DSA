@@ -2,7 +2,7 @@
 using namespace std;
 
 const int mx = 100;
-int vi[mx][mx];
+int graph[mx][mx];
 bool visit[mx];
 
 const int QUEUE_SIZE = mx;
@@ -48,7 +48,7 @@ void bfs(int st, int n) {
         cout << surur_val << " ";
 
         for (int x = 1; x <= n; x++) {
-            if (vi[surur_val][x] && !visit[x]) {
+            if (graph[surur_val][x] && !visit[x]) {
                 enqueue(x);
                 visit[x] = true;
             }
@@ -64,8 +64,8 @@ int main() {
     while (edge--) {
         int a, b;
         cin >> a >> b;
-        vi[a][b] = 1;
-        vi[b][a] = 1;
+        graph[a][b] = 1;
+        graph[b][a] = 1;
     }
 
     for(int x=0; x<=node; x++) visit[x] = false;
@@ -74,7 +74,7 @@ int main() {
     for(int x = 1; x <= node; x++){
         cout << "\t\t";
         for(int y = 1; y <= node; y++){
-            cout << vi[x][y] << " ";
+            cout << graph[x][y] << " ";
         }
         cout << endl;
     }
@@ -90,3 +90,26 @@ int main() {
     return 0;
 }
 
+/*
+input:
+7 6
+1 2
+1 3
+3 4
+3 5
+2 6
+2 7
+1
+
+output:
+Connected Nodes
+		0 1 1 0 0 0 0 
+		1 0 0 0 0 1 1 
+		1 0 0 1 1 0 0 
+		0 0 1 0 0 0 0 
+		0 0 1 0 0 0 0 
+		0 1 0 0 0 0 0 
+		0 1 0 0 0 0 0 
+
+BFS Traversal: 1 2 3 6 7 4 5
+*/
