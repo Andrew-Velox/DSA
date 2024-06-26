@@ -64,3 +64,31 @@ int main(){
 
     return 0;
 }
+
+/*
+
+Outputs:
+
+
+-2 1 2 3 4 6 7 8 9 
+
+After Erase: -2 1 2 3 6 7 8 9 
+Values before 4: 4
+Value of Index 5: 7
+
+Pair PBDS: 
+	 1 0
+	 2 1
+	 2 3
+	 4 2
+	 7 4
+
+After Erase: 
+	 1 0
+	 2 1
+	 2 3
+	 7 4
+3
+2 1
+
+*/
