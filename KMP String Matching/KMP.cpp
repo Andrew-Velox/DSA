@@ -7,7 +7,7 @@ using namespace std;
 #define dbg(x...)
 #endif
 
-
+// -----------------O(s1+s2) -> length------------------- //
 void computeLPSArray(string pat,ll M,ll *lps){
     ll len=0;
     lps[0]=0;
