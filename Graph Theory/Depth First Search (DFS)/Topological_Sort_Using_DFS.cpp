@@ -2,26 +2,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifdef velox
-#include "debug.h"
-#else
-#define dbg(x...)
-#endif
-
-#define srt(v) sort(v.begin(),v.end())
-#define grtsrt(v) sort(v.begin(),v.end(),greater<ll>())
-#define unq(v) v.erase(unique(v.begin(),v.end()),v.end())
 #define rev(v) reverse(v.begin(),v.end())
-#define YES cout << "YES" << endl
-#define NO cout << "NO" << endl
 #define ll long long
 #define pb push_back
 #define endl '\n'
 
 
 stack<char> st;
-bool visited[100];
-bool path[100];
+bool visited[100],path[100];
 bool cycle;
 
 vector<ll> adj_list[100];
