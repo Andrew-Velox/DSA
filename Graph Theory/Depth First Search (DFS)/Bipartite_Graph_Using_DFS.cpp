@@ -42,7 +42,7 @@ int main(){
         adj[b].pb(a);
     }
 
-    bool bipartite= isBipartite(n,adj);
+    bool bipartite = isBipartite(n,adj);
 
     if(bipartite) cout << "YES" << endl;
     else cout << "NO" << endl;
