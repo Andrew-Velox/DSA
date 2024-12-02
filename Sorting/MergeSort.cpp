@@ -38,12 +38,12 @@ void merge(vector<ll> &v, ll st, ll mid, ll end){
 
 }
 
-void merge_sort(vector<ll> &v, ll st, ll end){
+void mergeSort(vector<ll> &v, ll st, ll end){
 
     if(st<end){
         ll mid=st+(end-st)/2;
-        merge_sort(v,st,mid);
-        merge_sort(v,mid+1,end);
+        mergeSort(v,st,mid);
+        mergeSort(v,mid+1,end);
         merge(v,st,mid,end);
     }
 }
@@ -55,7 +55,7 @@ int main(){
     vector<ll> v={1,3,5,53,32,34,3,2,338,29,423,2,6,7,64,4,10};
     ll sz=v.size();
 
-    merge_sort(v,0,sz-1);
+    mergeSort(v,0,sz-1);
 
     for(auto val: v){
         cout << val << " ";
