@@ -8,7 +8,7 @@ using namespace std;
 #endif
 
 
-void marge(vector<ll> &v, ll st, ll mid, ll end){
+void merge(vector<ll> &v, ll st, ll mid, ll end){
     ll lft_sz=mid-st+1;
     ll rht_sz=end-mid;
     vector<ll> lft_v,rht_v;
@@ -38,13 +38,13 @@ void marge(vector<ll> &v, ll st, ll mid, ll end){
 
 }
 
-void marge_sort(vector<ll> &v, ll st, ll end){
+void merge_sort(vector<ll> &v, ll st, ll end){
 
     if(st<end){
         ll mid=st+(end-st)/2;
-        marge_sort(v,st,mid);
-        marge_sort(v,mid+1,end);
-        marge(v,st,mid,end);
+        merge_sort(v,st,mid);
+        merge_sort(v,mid+1,end);
+        merge(v,st,mid,end);
     }
 }
 
@@ -55,7 +55,7 @@ int main(){
     vector<ll> v={1,3,5,53,32,34,3,2,338,29,423,2,6,7,64,4,10};
     ll sz=v.size();
 
-    marge_sort(v,0,sz-1);
+    merge_sort(v,0,sz-1);
 
     for(auto val: v){
         cout << val << " ";
