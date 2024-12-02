@@ -22,16 +22,10 @@ void merge(vector<ll> &v, ll st, ll mid, ll end){
     ll cur=st;
     ll l=0,r=0;
     while(l<lft_sz && r<rht_sz){
-        if(lft_v[l] <= rht_v[r]){
-            v[cur]=lft_v[l];
-            l++;
-        }
-        else{
-            v[cur]=rht_v[r];
-            r++;
-        }
-        cur++;
+        if(lft_v[l] <= rht_v[r]) v[cur++]=lft_v[l++];
+        else v[cur++]=rht_v[r++];
     }
+
 
     while(l<lft_sz) v[cur++]=lft_v[l++];
     while(r<rht_sz) v[cur++]=rht_v[r++];
