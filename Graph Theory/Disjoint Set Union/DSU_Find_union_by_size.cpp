@@ -17,16 +17,10 @@ int find(int node){
     return par[node]=find(par[node]);
 }
 
-void unionn(int node1,int node2){
-    int leaderA=find(node1);
-    int leaderB=find(node2);
-    par[leaderA]=leaderB;
-}
-
 void union_by_size(int node1,int node2){
     int leaderA=find(node1);
     int leaderB=find(node2);
-
+    if(leaderA==leaderB) return;
     if(sz[leaderA] > sz[leaderB]){
         par[leaderB]=leaderA;
         sz[leaderA]+=sz[leaderB];
